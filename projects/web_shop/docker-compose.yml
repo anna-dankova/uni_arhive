@@ -16,14 +16,14 @@ services:
     container_name: shop_db
     environment:
       MYSQL_ROOT_PASSWORD: root_password
-      MYSQL_DATABASE: trgovina
-      MYSQL_USER: trgovina_user
-      MYSQL_PASSWORD: MocnoGeslo123!
+      MYSQL_DATABASE: shop
+      MYSQL_USER: shop_user
+      MYSQL_PASSWORD: StrongPassword123!
     ports:
       - "3306:3306"
     volumes:
       - db_data:/var/lib/mysql
-      - ./sql/shema.sql:/docker-entrypoint-initdb.d/shema.sql
+      - ./sql/schema.sql:/docker-entrypoint-initdb.d/schema.sql
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
