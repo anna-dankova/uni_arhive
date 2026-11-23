@@ -42,36 +42,12 @@ $products = $stmt->fetchAll();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PC Parts Shop</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-   <style>
-    body { background: #060F1F !important; color: #fff; }
-    .navbar-custom { background: #102B53; border-bottom: 2px solid #CEB5D4; }
-
-    .card { background: #102B53; border: 1px solid #50698D; border-top: 4px solid #4E7AB1; color: #fff; }
-    .card-title { color: #fff; }
-    .card-text { color: #7D9FC0; }
-    .price { color: #CEB5D4; }
-
-    .form-control, .form-select { background-color: #060F1F; border: 1px solid #7D9FC0; color: #fff; }
-    .form-control::placeholder { color: #7D9FC0; }
-    .form-control:focus, .form-select:focus { background-color: #060F1F; color: #fff; border-color: #CEB5D4; box-shadow: none; }
-
-    .btn-filter { background: #CEB5D4; border: 1px solid #CEB5D4; color: #102B53; font-weight: 600; }
-    .btn-filter:hover { background: #fff; border-color: #fff; color: #102B53; }
-
-    .btn-details { background: #4E7AB1; border: 1px solid #4E7AB1; color: #fff; }
-    .btn-details:hover { background: #CEB5D4; border-color: #CEB5D4; color: #102B53; }
-
-    .btn-soft { background: transparent; color: #7D9FC0; border: 1px solid #7D9FC0; }
-    .btn-soft:hover { background: #CEB5D4; border-color: #CEB5D4; color: #102B53; }
-
-    .badge-category { background: #7D9FC0; color: #060F1F; }
-    .stock-in { background: #CEB5D4; color: #102B53; padding: 2px 10px; border-radius: 6px; align-self: flex-start; display: inline-block; }
-</style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <nav class="navbar navbar-dark navbar-custom mb-4">
     <div class="container">
-        <a class="navbar-brand" href="index.php">PC builder shop</a>
+        <a class="navbar-brand" href="index.php">PC Parts Shop</a>
     </div>
 </nav>
 
@@ -103,13 +79,10 @@ $products = $stmt->fetchAll();
                     <div class="card-body d-flex flex-column">
                         <span class="badge badge-category align-self-start mb-2"><?= htmlspecialchars($product['category_name']) ?></span>
                         <h5 class="card-title"><?= htmlspecialchars($product['name']) ?></h5>
-                        <p class="fs-5 fw-bold mt-auto mb-2 price">&euro;<?= number_format($product['price'], 2) ?></p>
-                        <?php if ($product['stock'] > 0): ?>
-                            <p class="mb-3 stock-in">In stock: <?= $product['stock'] ?></p>
-                        <?php else: ?>
-                            <p class="mb-3 text-danger">Out of stock</p>
-                        <?php endif; ?>
-                        <!-- link to product -->
+                        <p class="fs-5 fw-bold price mt-auto mb-2">&euro;<?= number_format($product['price'], 2) ?></p>
+                        <p class="mb-3 <?= $product['stock'] > 0 ? 'stock-in' : 'text-danger' ?>">
+                            <?= $product['stock'] > 0 ? 'In stock: ' . $product['stock'] : 'Out of stock' ?>
+                        </p>
                         <a href="product.php?id=<?= $product['id'] ?>" class="btn btn-details">View details</a>
                     </div>
                 </div>
