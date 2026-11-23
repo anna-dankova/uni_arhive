@@ -1,20 +1,8 @@
 <?php
 
-$host = 'db';
-$dbName = 'shop';
-$username = 'shop_user';
-$password = 'StrongPassword123!';
-$dsn = "mysql:host=$host;dbname=$dbName;charset=utf8mb4";
-
-$options = [
-    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    PDO::ATTR_EMULATE_PREPARES => false,
-];
-
-try {
-    $pdo = new PDO($dsn, $username, $password, $options);
-} catch (PDOException $e) {
-    http_response_code(500);
-    exit('Database connection failed.');
-}
+$pdo = new PDO(
+    'mysql:host=db;dbname=shop;charset=utf8mb4',
+    'shop_user',
+    'StrongPassword123!',
+    [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]
+);
