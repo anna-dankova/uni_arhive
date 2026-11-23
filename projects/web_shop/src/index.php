@@ -82,6 +82,7 @@ $products = $stmt->fetchAll();
                         <p class="mb-3 <?= $product['stock'] > 0 ? 'text-success' : 'text-danger' ?>">
                             <?= $product['stock'] > 0 ? 'In stock: ' . $product['stock'] : 'Out of stock' ?>
                         </p>
+                        //link to product
                         <a href="product.php?id=<?= $product['id'] ?>" class="btn btn-outline-primary">View details</a>
                     </div>
                 </div>
