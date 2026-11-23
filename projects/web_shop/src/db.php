@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 $pdo = new PDO(
     'mysql:host=db;dbname=shop;charset=utf8mb4',
     'shop_user',
