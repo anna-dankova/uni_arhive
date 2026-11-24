@@ -48,6 +48,15 @@ $products = $stmt->fetchAll();
 <nav class="navbar navbar-dark navbar-custom mb-4">
     <div class="container">
         <a class="navbar-brand" href="index.php">PC Parts Shop</a>
+        <div class="d-flex align-items-center gap-2">
+            <?php if (isset($_SESSION['user_id'])): ?>
+                <span class="me-2"><?= htmlspecialchars($_SESSION['user_name']) ?> (<?= htmlspecialchars($_SESSION['user_role']) ?>)</span>
+                <a href="logout.php" class="btn btn-soft btn-sm">Logout</a>
+            <?php else: ?>
+                <a href="login.php" class="btn btn-soft btn-sm">Login</a>
+                <a href="register.php" class="btn btn-filter btn-sm">Register</a>
+            <?php endif; ?>
+        </div>
     </div>
 </nav>
 
